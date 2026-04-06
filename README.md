@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# dlibrary-web
 
-## Getting Started
+Frontend do D.Library — interface de gestão de leituras com recomendações via grafo.
 
-First, run the development server:
+**Stack:** Next.js · TypeScript · Tailwind CSS  
+**Deploy:** Fly.io — `https://dlibrary-web.fly.dev` _(em breve)_
+
+---
+
+## Sprint 0 — Fundação do Projeto
+
+> **Status:** ✅ Completo  
+> **Repositório:** dlibrary-web
+
+### O que foi construído
+
+No Sprint 0, geramos a estrutura inicial do frontend com Next.js, Typescript e Tailwind CSS. Criamos o `lib/api.ts`, cliente HTTP centralizado que encapsula toda a comunicação com a API. Dessa forma, em vez de cada componente fazer requisições diretamente para URLs, as chamadas passam por esse cliente, que já inclui o header de autenticação e a URL base configurada via variável de ambiente `NEXT_PUBLIC_API_URL`.
+
+### Ambientes
+
+- **Local:** `http://localhost:3001`
+- **Produção:** Fly.io _(Sprint 11)_
+
+### Como rodar localmente
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Verificar: `http://localhost:3001` carrega a página inicial
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Variáveis de ambiente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Copie `.env.local.example` para `.env.local` e preencha:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
